@@ -1,0 +1,18 @@
+# assinment-10
+# Evaluation
+test_loss, test_acc = myModel.evaluate(X_test, Y_test)
+test_labels_p = myModel.predict(X_test)
+import numpy as np
+test_labels_p = np.argmax(test_labels_p, axis=1)
+
+# Change layers config
+myModel.layers[0].name = 'Layer_0'
+myModel.layers[0].trainable = False
+myModel.layers[0].get_config()
+
+_pred = myModel.predict(X_test)
+X_test__ = X_test.reshape(X_test.shape[0], 28, 28)
+pred = myModel.predict_classes(X_test, verbose=1)
+
+print("prediction is:" , pred)
+
